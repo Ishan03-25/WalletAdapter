@@ -4,6 +4,7 @@ import {
 } from "@solana/wallet-adapter-react";
 import "./App.css";
 import {
+  WalletConnectButton,
   WalletDisconnectButton,
   WalletModalProvider,
   WalletMultiButton,
@@ -12,6 +13,7 @@ import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 // import { useMemo } from 'react'
 import { clusterApiUrl } from "@solana/web3.js";
 import { useMemo } from "react";
+import Airdrop from "./components/Airdrop";
 
 // export const Wallet = ({children}) => {
 //   const network = WalletAdapterNetwork.Devnet;
@@ -27,12 +29,11 @@ function App() {
 
   return (
     <ConnectionProvider endpoint={endpoint}>
-      <WalletProvider wallets={[]} autoConnect>
+      <WalletProvider wallets={[]}>
         <WalletModalProvider>
-          <div style={{display: "flex", justifyContent: "space-between"}}>
-            <WalletMultiButton />
-            <WalletDisconnectButton />
-          </div>
+          <WalletMultiButton />
+          <WalletDisconnectButton />
+          <Airdrop />
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
